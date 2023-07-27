@@ -26,10 +26,12 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import coil.ImageLoader
 import coil.compose.rememberAsyncImagePainter
@@ -95,15 +97,21 @@ fun LoginScreen(navController: NavHostController) {
                     )
                     .clip(RoundedCornerShape(16.dp))
             ) {
+                Surface(
+                    color = Color.White.copy(alpha = 0.2f),
+                    modifier = Modifier.fillMaxWidth()
+                ){
                 Column(
-                    modifier = Modifier.background(Color(0xFFFFFFFF)),
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Center
                 ) {
                     Spacer(modifier = Modifier.height(10.dp))
                     if (showLoginForm.value) {
                         Text(
-                            text = "Inicia Sesión"
+                            text = "Inicia Sesión",
+                            color = Color.White,
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 25.sp
                         )
                         UserForm(
                             isCreateAccount = false,
@@ -143,17 +151,19 @@ fun LoginScreen(navController: NavHostController) {
                             else
                                 "Inicia Sesión"
                         Text(
-                            text = text1
+                            text = text1,
+                            color = Color.White
                         )
                         Text(
                             text = text2,
                             modifier = Modifier
                                 .clickable { showLoginForm.value = !showLoginForm.value }
                                 .padding(start = 5.dp),
-                            color = Color.Blue
+                            color = Color.Green
                         )
                     }
                     Spacer(modifier = Modifier.height(10.dp))
+                }
                 }
             }
         }
@@ -276,7 +286,11 @@ fun SubmitButton(
             .padding(3.dp)
             .fillMaxWidth(),
         shape = CircleShape,
-        enabled = inputValid
+        enabled = inputValid,
+        colors = ButtonDefaults.buttonColors(
+            containerColor = Color.Green,
+            contentColor = Color.Black
+        )
     ) {
         Text(
             text = textId,
@@ -302,7 +316,9 @@ fun PasswordInput(
     OutlinedTextField(
         value = passwordState.value,
         onValueChange = { passwordState.value = it },
-        label = { Text(text = labelId) },
+        label = { Text(text = labelId,color = Color.White,
+            fontWeight = FontWeight.Bold,
+            fontSize = 15.sp) },
         singleLine = true,
         keyboardOptions = KeyboardOptions(
             keyboardType = KeyboardType.Password
@@ -319,7 +335,12 @@ fun PasswordInput(
             if (passwordState.value.isNotBlank())
                 PasswordVisibleIcon(passwordVisible)
             else null
-        }
+        },
+        colors = TextFieldDefaults.outlinedTextFieldColors(
+            focusedBorderColor = Color.Green,
+            unfocusedBorderColor = Color.Green.copy(alpha = 0.5f),
+            textColor = Color.White
+        )
     )
 }
 
@@ -338,7 +359,8 @@ fun PasswordVisibleIcon(
         }) {
         Icon(
             imageVector = image,
-            contentDescription = ""
+            contentDescription = "",
+            tint = Color.Green
         )
     }
 }
@@ -366,7 +388,9 @@ fun InputField(
     OutlinedTextField(
         value = valueState.value,
         onValueChange = { valueState.value = it },
-        label = { Text(text = labelId) },
+        label = { Text(text = labelId,color = Color.White,
+            fontWeight = FontWeight.Bold,
+            fontSize = 15.sp) },
         singleLine = isSingleLine,
         modifier = Modifier
             .padding(
@@ -377,6 +401,11 @@ fun InputField(
             .fillMaxWidth(),
         keyboardOptions = KeyboardOptions(
             keyboardType = keyboardType
+        ),
+        colors = TextFieldDefaults.outlinedTextFieldColors(
+            focusedBorderColor = Color.Green,
+            unfocusedBorderColor = Color.Green.copy(alpha = 0.5f),
+            textColor = Color.White
         )
     )
 }
