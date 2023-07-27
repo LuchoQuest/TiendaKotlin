@@ -41,8 +41,4 @@ git clone https://github.com/LuchoQuest/TiendaKotlin.git
 
 La Tienda Kotlin y Jetpack Compose se distribuye bajo la Licencia MIT. Consulta el archivo [LICENSE](https://github.com/tu_usuario/tienda-kotlin-compose/blob/main/LICENSE) para más detalles.
 
-## Contacto
 
-Si tienes preguntas, comentarios o sugerencias sobre la aplicación o el proyecto en general, no dudes en ponerte en contacto con nosotros. Puedes enviar un correo electrónico a `contacto@tiendakotlincompose.com` o abrir un problema en el repositorio.
-
-Esperamos que disfrutes explorando y contribuyendo al proyecto tanto como nosotros disfrutamos desarrollándolo. ¡Gracias por tu interés en la Tienda Kotlin y Jetpack Compose!
